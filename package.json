@@ -1,0 +1,7 @@
+{
+  "name": "logflare-winston-transport",
+  "version": "0.1.0",
+  "description": "Logflare transport for winston logger",
+  "main": "index.js",
+  "license": "MIT"
+}
