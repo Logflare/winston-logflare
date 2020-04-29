@@ -3,5 +3,11 @@
   "version": "0.1.0",
   "description": "Logflare transport for winston logger",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
 }
