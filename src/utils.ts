@@ -1,6 +1,6 @@
-const _ = require("lodash")
+import _ from "lodash"
 
-function winstonToLogflareMapper(info) {
+export function winstonToLogflareMapper(info) {
     const {message, level, ...metadata} = info
     const cleanedMetadata = _(metadata)
         .toPairs()
@@ -15,4 +15,3 @@ function winstonToLogflareMapper(info) {
     }
 }
 
-module.exports = {winstonToLogflareMapper}

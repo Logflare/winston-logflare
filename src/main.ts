@@ -1,7 +1,7 @@
-const Transport = require("winston-transport")
-const {winstonToLogflareMapper} = require("./utils")
-const _ = require("lodash")
-const axios = require("axios")
+import Transport from "winston-transport"
+import {winstonToLogflareMapper} from "./utils"
+import _ from "lodash"
+import axios from "axios"
 
 const defaultOptions = {
     maxBatchSize: 50,
@@ -9,7 +9,7 @@ const defaultOptions = {
     apiUrl: "https://logflare.app/logs",
 }
 
-module.exports = class WinstonLogflareTransport extends Transport {
+export default class WinstonLogflareTransport extends Transport {
     constructor(opts) {
         super(opts)
         if (_.isUndefined(opts.apiKey)) {
