@@ -1,22 +1,48 @@
+import _ from "lodash"
+import {LogflareHttpClient, LogflareTransport} from "logflare-transport-core"
 import Transport from "winston-transport"
-import {winstonToLogflareMapper} from "./utils"
-import {
-    LogflareHttpClient,
-    LogflareTransport,
-} from "../../logflare-transport-core-js/src/http_client"
 
-export default class WinstonLogflareTransport extends Transport
-    implements LogflareTransport {
+interface Info {
+    message: string
+    level: string
+    metadata: object
+}
+
+function winstonToLogflareMapper(info: Info) {
+    const {message, level, ...metadata} = info
+    const cleanedMetadata = _(metadata)
+        .toPairs()
+        .reject(([key, value]) => _.isSymbol(key))
+        .fromPairs()
+        .value()
+
+    return {
+        message,
+        metadata: {...cleanedMetadata, level},
+        timestamp: new Date().toISOString(),
+    }
+}
+
+class WinstonLogflareTransport extends Transport implements LogflareTransport {
     readonly httpClient: LogflareHttpClient
 
-    constructor(opts) {
+    constructor(opts: any) {
         super(opts)
         this.httpClient = new LogflareHttpClient(opts)
     }
 
-    log(info: {message: string; info: object}, callback) {
+    log(info: Info, callback: () => void) {
+        setImmediate(() => {
+            this.emit("logged", info)
+        })
+
         const logEvent = winstonToLogflareMapper(info)
-        this.httpClient.addLogEvent(logEvent)
-        callback()
+        try {
+            this.httpClient.addLogEvent(logEvent)
+        } finally {
+            callback()
+        }
     }
 }
+
+module.exports = WinstonLogflareTransport
