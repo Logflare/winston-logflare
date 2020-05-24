@@ -25,6 +25,7 @@ const logger = winston.createLogger({
         new LogflareTransport({
             apiKey,
             sourceToken,
+            batchMaxSize: 1, // optional config setting
             batchFlushInterval: 1000, // optional config setting
         }),
     ],
