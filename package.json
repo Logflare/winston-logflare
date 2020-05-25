@@ -1,12 +1,18 @@
 {
   "name": "logflare-winston-transport",
   "version": "0.1.0",
-  "description": "Logflare transport for winston logger",
+  "description": "Logflare transport for Winston logger",
   "main": "dist/index.js",
+  "keywords": [
+    "winston",
+    "winston-transport",
+    "logflare",
+    "logging"
+  ],
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17",
-    "logflare-transport-core": "^0.1.0",
+    "logflare-transport-core": "^0.1.1",
     "winston": "^3.2",
     "winston-transport": "^4.3"
   },
@@ -19,8 +25,12 @@
     "type": "git",
     "url": "git+https://github.com/logflare/winston-logflare.git"
   },
+  "bugs": {
+    "url": "https://github.com/logflare/winston-logflare/issues"
+  },
   "scripts": {
     "prepublish": "tsc"
   },
-  "types": "dist/main.d.ts"
+  "homepage": "https://logflare.app",
+  "types": "dist/index.d.ts"
 }
