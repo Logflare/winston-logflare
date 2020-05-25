@@ -1,11 +1,15 @@
 import _ from "lodash"
-import {LogflareHttpClient, LogflareTransport} from "logflare-transport-core"
+import {LogflareHttpClient} from "logflare-transport-core"
 import Transport from "winston-transport"
 
 interface Info {
     message: string
     level: string
     metadata: object
+}
+
+interface LogflareTransport {
+    readonly httpClient: LogflareHttpClient
 }
 
 function winstonToLogflareMapper(info: Info) {
