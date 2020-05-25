@@ -1,7 +1,7 @@
 {
-  "name": "logflare-winston-transport",
+  "name": "winston-logflare",
   "version": "0.1.0",
-  "description": "Logflare transport for Winston logger",
+  "description": "Logflare transport for the Winston logger",
   "main": "dist/index.js",
   "keywords": [
     "winston",
