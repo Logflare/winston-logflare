@@ -1,6 +1,6 @@
 {
   "name": "winston-logflare",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Logflare transport for the Winston logger",
   "main": "dist/index.js",
   "keywords": [
@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17",
-    "logflare-transport-core": "^0.1.1",
+    "logflare-transport-core": "^0.1.3",
     "winston": "^3.2",
     "winston-transport": "^4.3"
   },
